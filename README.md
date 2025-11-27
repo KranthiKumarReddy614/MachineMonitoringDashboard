@@ -1,98 +1,147 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+Machine Monitoring Dashboard
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A full-stack application built using Next.js (Frontend) and NestJS (Backend) to display and manage real-time machine monitoring data such as status, temperature, and energy usage.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+This project was created as part of the Scitech Industries – SDE Intern Assessment.
 
-## Description
+📌 How to Run the Project
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This guide explains how to run both the backend (NestJS) and frontend (Next.js) on your local machine.
 
-## Project setup
+🚀 1. How to Run the Backend (NestJS)
+Step 1 — Install Dependencies
+cd backend
+npm install
 
-```bash
-$ npm install
-```
+Step 2 — Start the Backend Server
+npm run start
 
-## Compile and run the project
+Backend will run at:
+http://localhost:3000
 
-```bash
-# development
-$ npm run start
+🌐 2. How to Run the Frontend (Next.js)
+Step 1 — Install Dependencies
+cd frontend
+npm install
 
-# watch mode
-$ npm run start:dev
+Step 2 — Start the Frontend
+npm run dev
 
-# production mode
-$ npm run start:prod
-```
+Frontend will run at:
+http://localhost:3001
 
-## Run tests
 
-```bash
-# unit tests
-$ npm run test
+(Or http://localhost:3000 if that port is available.)
 
-# e2e tests
-$ npm run test:e2e
+🔑 Login Credentials
 
-# test coverage
-$ npm run test:cov
-```
+To access the dashboard, use the following static credentials:
 
-## Deployment
+Field	Value
+Email	admin@example.com
+Password	password123
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+A JWT token is generated upon successful login.
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+🔌 API Endpoints
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
+Below are the backend API routes implemented using NestJS.
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+🔐 Authentication
+Login
+POST /login
 
-## Resources
 
-Check out a few resources that may come in handy when working with NestJS:
+Description: Validates email & password and returns a JWT token.
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+Body Example:
 
-## Support
+{
+  "email": "admin@example.com",
+  "password": "password123"
+}
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+🏭 Machine Endpoints (Protected)
 
-## Stay in touch
+These routes require a valid JWT passed in the Authorization header:
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Authorization: Bearer <token>
 
-## License
+1️⃣ Get All Machines
+GET /machines
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+Returns the full list of machine data.
+
+2️⃣ Get Machine by ID
+GET /machines/:id
+
+
+Returns data for a specific machine.
+
+3️⃣ Update Machine Readings
+POST /machines/:id/update
+
+
+Updates status, temperature, or energy consumption.
+
+Example Request Body:
+
+{
+  "temperature": 82,
+  "energyConsumption": 1400
+}
+
+🧩 Project Features
+Frontend (Next.js)
+
+Login page with JWT authentication
+
+Dashboard table listing:
+
+Machine Name
+
+Status
+
+Temperature (°C)
+
+Energy Consumption (kWh)
+
+Machine details page with:
+
+Full machine info
+
+Temperature trend chart (Recharts)
+
+Token-based protected routes
+
+Backend (NestJS)
+
+JWT-based authentication
+
+Protected machine API routes
+
+Dummy machine data
+
+Modular and clean architecture
+
+📦 Tech Stack
+
+Next.js (Frontend)
+
+React
+
+NestJS (Backend)
+
+TypeScript
+
+JWT Authentication
+
+Recharts
+
+Axios
+
+📤 Submission
+
+This repository contains both the frontend and backend code required for the assessment.
+Follow the instructions above to run and test the application locally.
